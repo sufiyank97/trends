@@ -129,7 +129,7 @@ const Dashboard = () => {
                 style={CUSTOM_STYLING}
                 shouldCloseOnOverlayClick={true}
                 shouldCloseOnEsc={true}
-                // onRequestClose={()=>setOpen(false)}
+                onRequestClose={()=>setOpen(false)}
                 ariaHideApp={false}
             >
                 <UserModal handelAccOpen={()=>setOpen(false)}/>
