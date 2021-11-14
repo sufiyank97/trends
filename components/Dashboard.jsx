@@ -114,7 +114,7 @@ const Dashboard = () => {
     const [subTabs,setSubTabs]=useState(initsubtabs)
     const [active,setActive]=useState(null)
     const [isOpen,setOpen]=useState(false)
-    const [isOpen1,setOpen1]=useState(true)
+    const [isOpen1,setOpen1]=useState(false)
     const images=[]
     for(var i=0;i<=28;i++){
         images.push(i)
