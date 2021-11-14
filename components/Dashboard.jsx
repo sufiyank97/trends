@@ -162,7 +162,7 @@ const Dashboard = () => {
                     </div>
                     {
                         menus.map((item,i)=>(
-                            <div key={i} onClick={()=>setActive(item.name)} className={`flex cursor-pointer ${active===item.name?'bg-secondary':''} flex-col w-full justify-center h-60 items-center`}>
+                            <div key={i} onClick={()=>setActive(item.name)} className={`z-10 flex cursor-pointer ${active===item.name?'bg-secondary':''} flex-col w-full justify-center h-60 items-center`}>
                                 <div className="flex w-18">
                                     <img src={item.img} className="w-full" alt="" />
                                 </div>
@@ -171,7 +171,7 @@ const Dashboard = () => {
                         ))
                     }
                 </div>
-                <div className="absolute w-full overflow-y-scroll h-full" style={{top:'60px',paddingLeft:'80px',zIndex:'-1'}}>
+                <div className="absolute w-full overflow-y-scroll h-full" style={{top:'60px',paddingLeft:'80px'}}>
                     <div className="flex w-full h-auto px-5 flex-col bg-greylight">
                         <div className="flex justify-between py-2">
                             <h1 className="capitalize text-black1 text-12" style={{borderBottom:'3px solid #7EC243',height:'fit-content'}}>main</h1>
@@ -198,7 +198,7 @@ const Dashboard = () => {
                         <div className="p-4 grid grid-cols-7 mb-16 bg-white gap-4">
                             {
                                 images.map(item=>(
-                                    <img key={item} src="/image1.png" alt="" />
+                                    <img src="/image1.png" alt="" />
                                 ))
                             }
                         </div>
