@@ -198,7 +198,7 @@ const Dashboard = () => {
                         <div className="p-4 grid grid-cols-7 mb-16 bg-white gap-4">
                             {
                                 images.map(item=>(
-                                    <img src="/image1.png" alt="" />
+                                    <img key={item} src="/image1.png" alt="" />
                                 ))
                             }
                         </div>
