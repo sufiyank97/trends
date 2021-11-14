@@ -22,8 +22,8 @@ const DrawerModal = ({handelOpen1}) => {
                 <div className="flex h-39 justify-around">
                     {
                         tabs1.map((item,i)=>(
-                            <div onClick={()=>setTabs1(tabs1=>tabs1.map(item1=>item1.name===item.name?{...item1,active:true}:{...item1,active:false}))} className="flex items-center cursor-pointer justify-center w-full" style={{borderTop:item.active?'3px solid #7EC243':''}}>
-                                <span key={i}  className={`capitalize text-12_20 ${item.active?'text-white':'text-pricol1'}`}>{item.name}</span>
+                            <div key={i} onClick={()=>setTabs1(tabs1=>tabs1.map(item1=>item1.name===item.name?{...item1,active:true}:{...item1,active:false}))} className="flex items-center cursor-pointer justify-center w-full" style={{borderTop:item.active?'3px solid #7EC243':''}}>
+                                <span   className={`capitalize text-12_20 ${item.active?'text-white':'text-pricol1'}`}>{item.name}</span>
                             </div>
                         ))
                     }
