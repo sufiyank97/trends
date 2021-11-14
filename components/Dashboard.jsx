@@ -162,7 +162,12 @@ const Dashboard = () => {
                     </div>
                     {
                         menus.map((item,i)=>(
-                            <div key={i} onClick={()=>setActive(item.name)} className={`z-10 flex cursor-pointer ${active===item.name?'bg-secondary':''} flex-col w-full justify-center h-60 items-center`}>
+                            <div key={i} onClick={()=>{
+                                setActive(item.name)
+                                if(item.name==="dashboard"){
+                                    setOpen1(!isOpen1)
+                                }
+                            }} className={`z-10 flex cursor-pointer ${active===item.name?'bg-secondary':''} flex-col w-full justify-center h-60 items-center`}>
                                 <div className="flex w-18">
                                     <img src={item.img} className="w-full" alt="" />
                                 </div>
@@ -182,9 +187,7 @@ const Dashboard = () => {
                                 menus1.map((item,i)=>(
                                     <div key={i} onClick={()=>{
                                         setMenus1(menus1=>menus1.map(menu=>menu.name===item.name?{...menu,active:true}:{...menu,active:false}))
-                                        if(item.name==="dashboard"){
-                                            setOpen1(!isOpen1)
-                                        }
+                                        
                                     }} className={`flex ${item.active?'bg-white':''}  justify-center items-center cursor-pointer w-118 h-68`} style={{borderTop: item.active?'2px solid #21241E':'1px solid #F1F1F1',borderBottom:item.active?'':'1px solid #F1F1F1'}}>
                                         <h1 className={`${item.active?'text-black':'text-greylight1'} text-16_28 capitalize `}>{item.name}</h1>
                                     </div>
