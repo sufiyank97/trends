@@ -38,7 +38,7 @@ const CUSTOM_STYLING1={
         right: 'auto',
         bottom: 'auto',
         width: 'auto',
-        height: 'auto',
+        height: '619px',
         background: '#464775',
         border:'0px',
         boxSizing: 'border-box',
