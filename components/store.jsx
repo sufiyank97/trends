@@ -5,7 +5,15 @@ const AppStore = React.createContext({
     folders:[
         {
             name:'Folder1',
-            dashboards:[]
+            dashboards:[
+                {
+                    name:'Dashboard1',
+                    images:[],
+                    products:1920,
+                    status:false
+                }
+            ],
+            status:true
         }
     ]
 })
