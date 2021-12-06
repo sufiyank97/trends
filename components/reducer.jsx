@@ -1,6 +1,10 @@
 import {
     COOKIES_DATA,
-    FOLDERS_DATA
+    FOLDERS_DATA,
+    COMPETITION,
+    COLOUR,
+    PRICE,
+    MARKET,
 } from './AppConstants'
 
 export default function reducer(state, action) {
@@ -14,6 +18,26 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 folders: action.payload,
+            };
+        case COMPETITION:
+            return {
+                ...state,
+                competition: action.payload,
+            };
+        case COLOUR:
+            return {
+                ...state,
+                colour: action.payload,
+            };
+        case PRICE:
+            return {
+                ...state,
+                price: action.payload,
+            };
+        case MARKET:
+            return {
+                ...state,
+                market: action.payload,
             };
         default:
             return state

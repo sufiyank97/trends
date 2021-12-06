@@ -4,7 +4,7 @@ import Cookies from './Cookies'
 import Modal from 'react-modal'
 import UserModal from './UserModal'
 import DrawerModal from './DrawerModal'
-
+import Brands from './Brands'
 const CUSTOM_STYLING={
     overlay:{
         background: 'transparent',
@@ -39,6 +39,27 @@ const CUSTOM_STYLING1={
         bottom: 'auto',
         width: 'auto',
         height: '619px',
+        background: '#464775',
+        border:'0px',
+        boxSizing: 'border-box',
+        padding: '0px',
+    }
+}
+const CUSTOM_STYLING2={
+    overlay:{
+        background: 'rgba(51, 52, 73, 0.8)',
+        // opacity: "0.95",
+        zIndex:'11111'
+    },
+    content:{
+        position:'absolute',
+        top: '65px',
+        left: '80px',
+        right: 'auto',
+        bottom: 'auto',
+        width: 'auto',
+        height: 'auto',
+        // maxHeight: '619px',
         background: '#464775',
         border:'0px',
         boxSizing: 'border-box',
@@ -115,10 +136,12 @@ const Dashboard = () => {
     const [active,setActive]=useState(null)
     const [isOpen,setOpen]=useState(false)
     const [isOpen1,setOpen1]=useState(false)
+    const [isOpen2,setOpen2]=useState(false)
     const images=[]
     for(var i=0;i<=28;i++){
         images.push(i)
     }
+    const [brands,setBrands]=useState(false)
     return (
         <div>
             {
@@ -144,6 +167,17 @@ const Dashboard = () => {
             >
                 <DrawerModal handelOpen1={()=>setOpen1(false)}/>
             </Modal>
+            <Modal
+                isOpen={isOpen2}
+                style={CUSTOM_STYLING2}
+                shouldCloseOnOverlayClick={true}
+                shouldCloseOnEsc={true}
+                onRequestClose={()=>setOpen2(false)}
+                ariaHideApp={false}
+            >
+                <Brands />
+                {/* <DrawerModal handelOpen1={()=>setOpen1(false)}/> */}
+            </Modal>
             <div className="relative overflow-hidden">
                 <div className="flex items-center justify-between w-full absolute bg-primary h-60" style={{paddingLeft:'80px'}}>
                     <h1 className="capitalize text-white text-16 pl-4">brands</h1>
@@ -154,7 +188,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col items-center w-80  bg-primary h-screen">
+                <div className="relative flex flex-col items-center w-80  bg-primary h-screen">
                     <div className="flex justify-center h-60 z-10 items-center w-full">
                         <div className="flex w-28">
                             <img src="/logo1.png" className="w-full" alt="" />
@@ -166,6 +200,8 @@ const Dashboard = () => {
                                 setActive(item.name)
                                 if(item.name==="dashboard"){
                                     setOpen1(!isOpen1)
+                                }else if(item.name==="brands"){
+                                    setBrands(!brands)
                                 }
                             }} className={`z-10 flex cursor-pointer ${active===item.name?'bg-secondary':''} flex-col w-full justify-center h-60 items-center`}>
                                 <div className="flex w-18">
@@ -174,6 +210,12 @@ const Dashboard = () => {
                                 <h1 className="capitalize text-grey text-9 pt-1">{item.name}</h1>
                             </div>
                         ))
+                    }
+                    {
+                        brands &&
+                        <div className="absolute" style={{right:'-20rem',zIndex:'1',top:'4rem'}}>
+                            <Brands />
+                        </div>
                     }
                 </div>
                 <div className="absolute w-full overflow-y-scroll h-full" style={{top:'60px',paddingLeft:'80px'}}>

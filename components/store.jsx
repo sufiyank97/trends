@@ -15,7 +15,11 @@ const AppStore = React.createContext({
             ],
             status:true
         }
-    ]
+    ],
+    competition:false,
+    colour:false,
+    price:false,
+    market:false,
 })
 
 export default AppStore
