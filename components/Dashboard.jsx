@@ -200,8 +200,10 @@ const Dashboard = () => {
                                 setActive(item.name)
                                 if(item.name==="dashboard"){
                                     setOpen1(!isOpen1)
+                                    setBrands(false)
                                 }else if(item.name==="brands"){
                                     setBrands(!brands)
+                                    setOpen1(false)
                                 }
                             }} className={`z-10 flex cursor-pointer ${active===item.name?'bg-secondary':''} flex-col w-full justify-center h-60 items-center`}>
                                 <div className="flex w-18">
