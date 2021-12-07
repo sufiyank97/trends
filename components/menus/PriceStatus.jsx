@@ -18,6 +18,9 @@ const PriceStatus = () => {
         '80%-90%',
         '90%-100%',
     ]
+    const [radio1,setradio1]=useState(null)
+    const [radio2,setradio2]=useState(null)
+    const [radio3,setradio3]=useState(null)
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
             <div className="flex self-end cursor-pointer" onClick={()=>dispatch({type:PRICE,payload:false})}>
@@ -28,19 +31,19 @@ const PriceStatus = () => {
                 <div className="flex mt-1 justify-evenly">
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r1" checked={radio1==="r1"} onChange={()=>setradio1('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             all
                         </label>
                     </div>
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r2" checked={radio1==="r2"} onChange={()=>setradio1('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             in stock
                         </label>
                     </div>
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r3" checked={radio1==="r3"} onChange={()=>setradio1('r3')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             out of stock
                         </label>
                     </div>
@@ -51,19 +54,19 @@ const PriceStatus = () => {
                 <div className="flex mt-1 justify-between">
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r1" checked={radio2==="r1"} onChange={()=>setradio2('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             all
                         </label>
                     </div>
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r2" checked={radio2==="r2"} onChange={()=>setradio2('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             exclude discounted
                         </label>
                     </div>
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r3" checked={radio2==="r3"} onChange={()=>setradio2('r3')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             only discounted
                         </label>
                     </div>
@@ -74,19 +77,19 @@ const PriceStatus = () => {
                 <div className="flex mt-1 justify-evenly">
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r1" checked={radio3==="r1"} onChange={()=>setradio3('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             all
                         </label>
                     </div>
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r2" checked={radio3==="r2"} onChange={()=>setradio3('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             atleast once
                         </label>
                     </div>
                     <div className="flex">
                         <label className="capitalize flex items-center text-white text-12_20">
-                            <input type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
+                            <input value="r3" checked={radio3==="r3"} onChange={()=>setradio3('r3')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
                             never
                         </label>
                     </div>

@@ -27,7 +27,12 @@ const Brands = () => {
     return (
         <div className="flex flex-col p-2 w-316  bg-secondary justify-between">
             <div className="flex text-white h-39 items-center text-14 cursor-pointer justify-between capitalize">
-                <h1 onClick={()=>dispatch({type:MARKET,payload:!market1})} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${market1?'bg-pri1':''}`} style={{height:'100%'}}>
+                <h1 onClick={()=>{
+                    dispatch({type:MARKET,payload:!market1})
+                    dispatch({type:COMPETITION,payload:false})
+                    dispatch({type:COLOUR,payload:false})
+                    dispatch({type:PRICE,payload:false})
+                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${market1?'bg-pri1':''}`} style={{height:'100%'}}>
                     markets
                 </h1>
                 {
@@ -41,7 +46,12 @@ const Brands = () => {
                 }
             </div>
             <div className="flex relative text-white h-39 items-center text-14  justify-between capitalize">
-                <h1 onClick={()=>dispatch({type:COMPETITION,payload:!compe})} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${compe?'bg-pri1':''}`} style={{height:'100%'}}>
+                <h1 onClick={()=>{
+                    dispatch({type:MARKET,payload:false})
+                    dispatch({type:COMPETITION,payload:!compe})
+                    dispatch({type:COLOUR,payload:false})
+                    dispatch({type:PRICE,payload:false})
+                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${compe?'bg-pri1':''}`} style={{height:'100%'}}>
                     competition
                 </h1>
                 {
@@ -60,7 +70,12 @@ const Brands = () => {
                 </h1>
             </div>
             <div className="flex relative text-white h-39 items-center text-14  justify-between capitalize">
-                <h1 onClick={()=>dispatch({type:COLOUR,payload:!col})} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${col?'bg-pri1':''}`} style={{height:'100%'}}>
+                <h1 onClick={()=>{
+                    dispatch({type:MARKET,payload:false})
+                    dispatch({type:COMPETITION,payload:false})
+                    dispatch({type:COLOUR,payload:!col})
+                    dispatch({type:PRICE,payload:false})
+                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${col?'bg-pri1':''}`} style={{height:'100%'}}>
                 colors
                 </h1>
                 {
@@ -74,7 +89,12 @@ const Brands = () => {
                 }
             </div>
             <div className="flex relative text-white h-39 items-center text-14 cursor-pointer justify-between capitalize">
-                <h1 onClick={()=>dispatch({type:PRICE,payload:!price1})} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${price1?'bg-pri1':''}`} style={{height:'100%'}}>
+                <h1 onClick={()=>{
+                    dispatch({type:MARKET,payload:false})
+                    dispatch({type:COMPETITION,payload:false})
+                    dispatch({type:COLOUR,payload:false})
+                    dispatch({type:PRICE,payload:!price1})
+                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${price1?'bg-pri1':''}`} style={{height:'100%'}}>
                     price & status
                 </h1>
                 {
