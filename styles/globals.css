@@ -25,3 +25,28 @@ a {
   margin:0;
   padding:0;
 }
+
+input[type="checkbox"]{
+  display:none;
+}
+input[type="checkbox"]+span{
+  width: 12px;
+  height: 12px;
+  margin-right: 0.5rem;
+  background-image: url('/checkbox_unchecked.png');
+}
+input[type="checkbox"]:checked +span{
+  background-image: url('/checkbox_checked.png');
+}
+input[type="radio"]{
+  display:none;
+}
+input[type="radio"]+span{
+  width: 14px;
+  height: 14px;
+  margin-right: 0.5rem;
+  background-image: url('/radio_unchecked.png');
+}
+input[type="radio"]:checked +span{
+  background-image: url('/radio_checked.png');
+}

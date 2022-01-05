@@ -325,7 +325,7 @@ const DrawerModal = ({handelOpen1}) => {
                             </label>
                         </div>
                     </div>
-                    <div className="flex flex-col overflow-auto" style={{padding:'0px 24px'}}>
+                    <div className="flex flex-col overflow-auto" style={{padding:'0px 24px',height:'calc(100vh - 120px)'}}>
                     {
                         myDashboards.map((item,i)=>{
                             var {id}=item

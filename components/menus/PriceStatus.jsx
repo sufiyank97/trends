@@ -29,69 +29,78 @@ const PriceStatus = () => {
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-pricol1 mb-2">status</h1>
                 <div className="flex mt-1 justify-evenly">
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r1" checked={radio1==="r1"} onChange={()=>setradio1('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            all
-                        </label>
+                    <div className="flex items-center">
+                    <input value="r1" checked={radio1==="r1"} onChange={()=>setradio1('r1')} type="radio" name="" id="all" className="mr-1" style={{accentColor:'yellow'}}/>
+                                <span></span>
+                                <label htmlFor="all" className="capitalize flex items-center text-white text-12_20">
+                                all
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r2" checked={radio1==="r2"} onChange={()=>setradio1('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            in stock
-                        </label>
+                    <div className="flex items-center">
+                    <input value="r2" checked={radio1==="r2"} onChange={()=>setradio1('r2')} type="radio" name="" id="in stock" className="mr-1" style={{accentColor:'yellow'}}/>
+                                <span></span>
+                                <label htmlFor="in stock" className="capitalize flex items-center text-white text-12_20">
+                                in stock
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r3" checked={radio1==="r3"} onChange={()=>setradio1('r3')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            out of stock
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r3" checked={radio1==="r3"} onChange={()=>setradio1('r3')} type="radio" name="" id="out of stock" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="out of stock" className="capitalize flex items-center text-white text-12_20">
+                                out of stock
+                                </label>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col my-2">
                 <h1 className="text-12_20 capitalize text-pricol1 mb-2">discounted products</h1>
                 <div className="flex mt-1 justify-between">
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r1" checked={radio2==="r1"} onChange={()=>setradio2('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            all
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r1" checked={radio2==="r1"} onChange={()=>setradio2('r1')} type="radio" name="" id="all1" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="all1" className="capitalize flex items-center text-white text-12_20">
+                                all
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r2" checked={radio2==="r2"} onChange={()=>setradio2('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            exclude discounted
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r2" checked={radio2==="r2"} onChange={()=>setradio2('r2')} type="radio" name="" id="exclude discounted" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="exclude discounted" className="capitalize flex items-center text-white text-12_20">
+                                exclude discounted
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r3" checked={radio2==="r3"} onChange={()=>setradio2('r3')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            only discounted
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r3" checked={radio2==="r3"} onChange={()=>setradio2('r3')} type="radio" name="" id="only discounted" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="only discounted" className="capitalize flex items-center text-white text-12_20">
+                                only discounted
+                                </label>
                     </div>
                 </div>
             </div>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-pricol1 mb-2">select brands</h1>
                 <div className="flex mt-1 justify-evenly">
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r1" checked={radio3==="r1"} onChange={()=>setradio3('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            all
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r1" checked={radio3==="r1"} onChange={()=>setradio3('r1')} type="radio" name="" id="all3" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="all3" className="capitalize flex items-center text-white text-12_20">
+                                all
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r2" checked={radio3==="r2"} onChange={()=>setradio3('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            atleast once
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r2" checked={radio3==="r2"} onChange={()=>setradio3('r2')} type="radio" name="" id="atleast once" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="atleast once" className="capitalize flex items-center text-white text-12_20">
+                                atleast once
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r3" checked={radio3==="r3"} onChange={()=>setradio3('r3')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            never
-                        </label>
+                    <div className="flex items-center">
+                            <input value="r3" checked={radio3==="r3"} onChange={()=>setradio3('r3')} type="radio" name="" id="never" className="mr-1" style={{accentColor:'yellow'}}/>
+                        <span></span>
+                                <label htmlFor="never" className="capitalize flex items-center text-white text-12_20">
+                                never
+                                </label>
                     </div>
                 </div>
             </div>
@@ -107,11 +116,16 @@ const PriceStatus = () => {
                 <div className="grid grid-cols-2 gap-2 px-2">
                     {
                         arr.map((item,i)=>(
-                            <div className="flex" key={i}>
-                                <label className="capitalize flex items-center text-white text-12_20">
-                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                            <div className="flex items-center" key={i}>
+                                <input id={i} className="mr-1" type="checkbox" name=""  style={{accentColor:'yellow'}} />
+                                <span></span>
+                                <label htmlFor={i} className="capitalize flex items-center text-white text-12_20">
                                     {item}
                                 </label>
+                                {/* <label className="capitalize flex items-center text-white text-12_20">
+                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                                    {item}
+                                </label> */}
                             </div>
                         ))
                     }

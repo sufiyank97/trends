@@ -24,10 +24,15 @@ const Competition = () => {
                 {
                     arr.map((item,i)=>(
                         <div className="flex items-center" key={i}>
-                            <label  className="capitalize flex items-center text-white text-12_20 ">
+                            <input id={i} className="mr-1" type="checkbox" name=""  style={{accentColor:'yellow'}} />
+                                <span></span>
+                                <label htmlFor={i} className="capitalize flex items-center text-white text-12_20">
+                                    {item}
+                                </label>
+                            {/* <label  className="capitalize flex items-center text-white text-12_20 ">
                                 <input type="checkbox" className="mr-2" name="" id={item} style={{accentColor:'yellow'}}/>
                                 {item}
-                            </label>
+                            </label> */}
                         </div>
                     ))
                 }
@@ -45,10 +50,15 @@ const Competition = () => {
                 {
                     arr1.map((item,i)=>(
                         <div className="flex items-center" key={i}>
-                            <label  className="capitalize flex items-center text-white text-12_20 ">
+                            <input id={item} className="mr-1" type="checkbox" name=""  style={{accentColor:'yellow'}} />
+                                <span></span>
+                                <label htmlFor={item} className="capitalize flex items-center text-white text-12_20">
+                                    {item}
+                                </label>
+                            {/* <label  className="capitalize flex items-center text-white text-12_20 ">
                                 <input type="checkbox" className="mr-2" name="" id={item} style={{accentColor:'yellow'}}/>
                                 {item}
-                            </label>
+                            </label> */}
                         </div>
                     ))
                 }

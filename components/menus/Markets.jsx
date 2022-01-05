@@ -42,11 +42,16 @@ const Markets = () => {
                 <div className="grid grid-cols-2 gap-2 px-2">
                     {
                         arr.map((item,i)=>(
-                            <div className="flex" key={i}>
-                                <label className="capitalize flex items-center text-white text-12_20">
-                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                            <div className="flex items-center" key={i}>
+                                <input id={i} className="mr-1" type="checkbox" name=""  style={{accentColor:'yellow'}} />
+                                <span></span>
+                                <label htmlFor={i} className="capitalize flex items-center text-white text-12_20">
                                     {item}
                                 </label>
+                                {/* <label className="capitalize flex items-center text-white text-12_20">
+                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                                    {item}
+                                </label> */}
                             </div>
                         ))
                     }
@@ -57,29 +62,36 @@ const Markets = () => {
                 <div className="grid grid-cols-2 gap-2 px-2">
                     {
                         arr1.map((item,i)=>(
-                            <div className="flex" key={i}>
-                                <label className="capitalize flex items-center text-white text-12_20">
-                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                            <div className="flex items-center" key={i}>
+                                <input id={item} className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                                <span></span>
+                                <label htmlFor={item} className="capitalize flex items-center text-white text-12_20">
                                     {item}
                                 </label>
+                                {/* <input id={item} className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                                <label htmlFor={item} className="capitalize flex items-center text-white text-12_20">
+                                    {item}
+                                </label> */}
                             </div>
                         ))
                     }
                 </div>
             </div>
             <div className="flex flex-col my-2">
-                <div className="flex mt-1 justify-evenly">
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r1" checked={radio1==="r1"} onChange={()=>setradio1('r1')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            adults
-                        </label>
+                <div className="flex mt-1 ">
+                    <div className="flex ml-2 items-center">
+                        <input value="r1" checked={radio1==="r1"} onChange={()=>setradio1('r1')} type="radio" name="" id="adults" className="mr-1" style={{accentColor:'yellow'}}/>
+                                <span></span>
+                                <label htmlFor="adults" className="capitalize flex items-center text-white text-12_20">
+                                adults
+                                </label>
                     </div>
-                    <div className="flex">
-                        <label className="capitalize flex items-center text-white text-12_20">
-                            <input value="r2" checked={radio1==="r2"} onChange={()=>setradio1('r2')} type="radio" name="" id="" className="mr-1" style={{accentColor:'yellow'}}/>
-                            children
-                        </label>
+                    <div className="flex ml-4 items-center">
+                        <input value="r2" checked={radio1==="r2"} onChange={()=>setradio1('r2')} type="radio" name="" id="children" className="mr-1" style={{accentColor:'yellow'}}/>
+                                <span></span>
+                                <label htmlFor="children" className="capitalize flex items-center text-white text-12_20">
+                                children
+                                </label>
                     </div>
                 </div>
             </div>
@@ -87,11 +99,16 @@ const Markets = () => {
                 <div className="grid grid-cols-2 gap-2 px-2">
                     {
                         arr2.map((item,i)=>(
-                            <div className="flex" key={i}>
-                                <label className="capitalize flex items-center text-white text-12_20">
-                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                            <div className="flex items-center" key={i}>
+                                <input id={item} className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                                <span></span>
+                                <label htmlFor={item} className="capitalize flex items-center text-white text-12_20">
                                     {item}
                                 </label>
+                                {/* <label className="capitalize flex items-center text-white text-12_20">
+                                    <input className="mr-1" type="checkbox" name="" id="" style={{accentColor:'yellow'}} />
+                                    {item}
+                                </label> */}
                             </div>
                         ))
                     }
