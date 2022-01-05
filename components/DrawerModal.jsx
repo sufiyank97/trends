@@ -330,7 +330,9 @@ const DrawerModal = ({handelOpen1}) => {
                         myDashboards.map((item,i)=>{
                             var {id}=item
                             return (
-                                <StripeDashboard active={item.status} data={item} handleDashboardStatus={()=>handleDashboardStatus(item)} handleDashboardDelete={()=>deleteDashboard({ variables: { id } })}/>
+                                <Fragment key={i}>
+                                    <StripeDashboard active={item.status} data={item} handleDashboardStatus={()=>handleDashboardStatus(item)} handleDashboardDelete={()=>deleteDashboard({ variables: { id } })}/>
+                                </Fragment>
     
                             )
                         }
