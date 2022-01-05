@@ -1,6 +1,8 @@
 import {
     COOKIES_DATA,
     FOLDERS_DATA,
+    DASHBOARDS_DATA,
+    SELECTED_FOLDER_DATA,
     COMPETITION,
     COLOUR,
     PRICE,
@@ -18,6 +20,16 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 folders: action.payload,
+            };
+        case SELECTED_FOLDER_DATA:
+            return {
+                ...state,
+                selectedFolderValue: action.payload,
+            };
+        case DASHBOARDS_DATA:
+            return {
+                ...state,
+                dashboards: action.payload,
             };
         case COMPETITION:
             return {

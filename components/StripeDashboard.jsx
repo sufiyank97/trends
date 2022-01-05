@@ -9,7 +9,7 @@ const StripeDashboard = ({active,data,handleDashboardStatus,handleDashboardDelet
         <div onClick={()=>handleDashboardStatus()} className={`cursor-pointer flex flex-col justify-center ${active?'bg-secondary2':'bg-secondary'} `} style={{borderRadius:'8px',marginTop:'11px'}}>
             <div className={`flex justify-between items-center h-60`} style={{padding:'0 24px'}}>
                 <span className="flex text-14 text-white">
-                    {data.name}
+                    {data.dashboard_name}
                 </span>
                 <div className="flex text-14 text-pricol1">
                     {
@@ -21,7 +21,8 @@ const StripeDashboard = ({active,data,handleDashboardStatus,handleDashboardDelet
                         ):<Fragment/>
                     }
                     <span>
-                        {data.products} products
+                        {/* {data.products} products */}
+                        1920 products
                     </span>
                 </div>
             </div>

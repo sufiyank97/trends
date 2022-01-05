@@ -1,13 +1,31 @@
-import React,{useState,useContext,useEffect,Fragment} from 'react'
+import React, { useReducer, useEffect,useState,useContext,Fragment, useCallback } from 'react';
+import {
+  useQuery,
+  useMutation,
+  useApolloClient,
+  useReactiveVar
+} from '@apollo/client';
 import StripeDashboard from './StripeDashboard'
 import FolderOpen from './FolderOpen'
 import DashboardOpen from './DashboardOpen'
 import Modal from 'react-modal'
 import AppStore from './store'
-import {FOLDERS_DATA} from './AppConstants'
+import {FOLDERS_DATA,DASHBOARDS_DATA,SELECTED_FOLDER_DATA} from './AppConstants'
+import { GET_CURRENT_USER, GET_SELECTED_FOLDER } from '../apollo/local/queries';
+import {
+  GET_FOLDERS,
+  GET_SHARED_FOLDERS,
+  GET_DASHBOARDS_BY_FOLDER_ID
+} from '../apollo/remote/queries';
+import {
+  CREATE_FOLDER,
+  CREATE_DASHBOARD,
+  DELETE_DASHBOARD
+} from '../apollo/remote/mutations';
+import { currentUser } from '../apollo/client';
 const DrawerModal = ({handelOpen1}) => {
     const {state,dispatch}=useContext(AppStore)
-    const {folders}=state
+    const {folders,dashboards}=state
     const inittabs1=[
         {
             name:'my folders',
@@ -50,33 +68,139 @@ const DrawerModal = ({handelOpen1}) => {
     const [myFolders,setMyFolders]=useState([])
     useEffect(()=>{
         if(folders.length>0){
-            setMyFolders(folders)
+            setMyFolders1(folders)
         }
     },[folders])
-    console.log(folders,'folders')
-    console.log(myFolders,'myFolders')
-    const handleDashboardStatus=(item,item1)=>{
-        const folders=[...myFolders]
-        dispatch({
-            type:FOLDERS_DATA,
-            payload:folders.map(folder=>{
-                if(folder.name===item.name){
-                    const dashboardF=folder.dashboards.map(dashboard=>{
-                        if(dashboard.name===item1.name){
-                            dashboard['status']=!dashboard['status']
-                            return dashboard
-                        }else{
-                            dashboard['status']=false
-                            return dashboard
-                        }
+    // Apollo
+    const client = useApolloClient();
+
+    const user = useReactiveVar(currentUser);
+
+    const { data: userFoldersData, foldersLoading, foldersError } = useQuery(
+        GET_FOLDERS,
+        {
+        variables: {
+            userId: user.id
+        }
+        }
+    );
+    const [myFolders1,setMyFolders1]=useState([])
+    useEffect(()=>{
+        if(userFoldersData){
+            if(userFoldersData.getFolderByUserId){
+                var foldersData=Object.values(userFoldersData.getFolderByUserId).map((item,i)=>i==0?{...item,'status':true}:{...item,'status':false})
+                dispatch({
+                    type:FOLDERS_DATA,
+                    payload:foldersData
+                })
+            }
+        }
+    },[userFoldersData])
+    const [selectedFolder,setSelectedFolder]=useState(null)
+    const [myDashboards,setDashboards]=useState([])
+    const { data, dashboardsLoading, dashboardsError } = useQuery(
+        GET_DASHBOARDS_BY_FOLDER_ID,
+        {
+            variables: {
+                folderId: selectedFolder?.id || null
+            },
+            skip: !selectedFolder
+        }
+        );
+    console.log(myDashboards,'myDashboards')
+    // Delete dashboard
+    const [deleteDashboard] = useMutation(DELETE_DASHBOARD, {
+        update: (cache, { data: { deleteDashboard } }) => {
+        const { getDashboardByFolderId } = cache.readQuery({
+            query: GET_DASHBOARDS_BY_FOLDER_ID,
+            variables: { folderId: selectedFolder.id }
+        });
+        cache.writeQuery({
+            query: GET_DASHBOARDS_BY_FOLDER_ID,
+            variables: { folderId: selectedFolder.id },
+            data: {
+            getDashboardByFolderId: getDashboardByFolderId.filter(
+                dashboard => dashboard.id !== deleteDashboard.id
+            )
+            }
+        });
+        }
+    });
+    useEffect(()=>{
+        if(data){
+            if(Object.values(data.getDashboardByFolderId).length>0){
+                // if(myDashboards.length>0){
+                //     var dashboardsData=Object.values(data.getDashboardByFolderId)
+                //     var arr1=[...myDashboards]
+                //     dashboardsData.map(item=>{
+                //         if(myDashboards.every(item1=>item1.id!==item.id)){
+                //             arr1.push({...item,status:false})
+                //         }
+                //     })
+                //     dispatch({
+                //         type:DASHBOARDS_DATA,
+                //         payload:arr1
+                //     })
+                // }else{
+                    var dashboardsData=Object.values(data.getDashboardByFolderId).map((item,i)=>i==0?{...item,'status':false}:{...item,'status':false})
+                    dispatch({
+                        type:DASHBOARDS_DATA,
+                        payload:dashboardsData
                     })
-                    folder['dashboards']=dashboardF
-                    return folder
-                }else{
-                    return folder
-                }
+                // }
+            }else{
+                dispatch({
+                    type:DASHBOARDS_DATA,
+                    payload:[]
+                })
+            }
+        }else{
+            dispatch({
+                type:DASHBOARDS_DATA,
+                payload:[]
             })
+        }
+    },[data])
+    useEffect(()=>{
+        setDashboards(dashboards)
+    },[dashboards])
+    useEffect(()=>{
+        if(myFolders1.length>0){
+            const selectedFolderData=myFolders1.find(item=>item.status)
+            dispatch({
+                type:SELECTED_FOLDER_DATA,
+                payload:selectedFolderData
+            })
+            setSelectedFolder(selectedFolderData)
+        }
+    },[myFolders1])
+    const handleDashboardStatus=(item)=>{
+        dispatch({
+            type:DASHBOARDS_DATA,
+            payload:myDashboards.map(item1=>item1.id===item.id?{...item1,'status':!item1.status}:{...item1})
         })
+        // const folders=[...myFolders]
+        // dispatch({
+        //     type:FOLDERS_DATA,
+        //     payload:folders.map(folder=>{
+        //         if(folder.name===item.name){
+        //             const dashboardF=folder.dashboards.map(dashboard=>{
+        //                 if(dashboard.name===item1.name){
+        //                     dashboard['status']=!dashboard['status']
+        //                     return dashboard
+        //                 }else{
+        //                     dashboard['status']=false
+        //                     return dashboard
+        //                 }
+        //             })
+        //             folder['dashboards']=dashboardF
+        //             return folder
+        //         }else{
+        //             return folder
+        //         }
+        //     })
+        // })
+
     }
     const handleDashboardDelete=(item,item1)=>{
         const folders=[...myFolders]
@@ -130,28 +254,28 @@ const DrawerModal = ({handelOpen1}) => {
                     <div className="flex justify-around items-center h-60" style={{padding:'12px 16px'}}>
                         <input onChange={(e)=>{
                                 if(!e.target.value){
-                                    setMyFolders(folders)
+                                    setMyFolders1(folders)
                                 }else{
-                                    setMyFolders(oldArray=>oldArray.filter(item=>item.name.toLowerCase().includes(e.target.value.toLowerCase())))
+                                    setMyFolders1(folders.filter(item=>item.folderName.toLowerCase().includes(e.target.value.toLowerCase())))
                                 }
                             }} type="text" className="text-12_20 w-191 outline-none text-white" style={{borderRadius:'50px',background:'rgba(0, 0, 0, 0.07)',padding:'8px 16px'}} placeholder="Search for folders..."/>
                         <span onClick={()=>setOpenFolder(true)} className="cursor-pointer capitalize text-yellow text-13">+add folder</span>
                     </div>
                     <div className="flex flex-col w-full">
                         {
-                            myFolders.map((item,i,arr)=>(
-                                <div  key={i} className={`flex items-center px-4 cursor-pointer items-center justify-between h-48 w-full ${item.status?'bg-pri1':''}`}>
+                            myFolders1.map((item,i,arr)=>(
+                                <div  key={i} className={`flex items-center px-4 hover:bg-pri1 cursor-pointer items-center justify-between h-48 w-full ${item.status?'bg-pri1':''}`}>
                                     <div onClick={()=>{
                                     if(myFolders.length!=1){
                                         // setMyFolders(folders=>folders.map(item1=>item1.name===item.name?{...item1,status:true}:{...item1,status:false}))
                                         dispatch({
                                             type:FOLDERS_DATA,
-                                            payload:folders.map(item1=>item1.name===item.name?{...item1,status:true}:{...item1,status:false})
+                                            payload:folders.map(item1=>item1.id===item.id?{...item1,status:true}:{...item1,status:false}) 
                                         })
                                     }
                                 }} className="flex items-center w-full" style={{height:'100%'}}>
                                         <img src="/folder.png" className="h-15" alt="" />
-                                        <h1 className="text-14 text-white px-2">{item.name}</h1>
+                                        <h1 className="text-14 text-white px-2">{item.folderName}</h1>
                                     </div>
                                     <div className="flex h-20">
                                         <img src="/delete.png" className="w-full pr-2" alt="" onClick={()=>{
@@ -183,22 +307,17 @@ const DrawerModal = ({handelOpen1}) => {
                             <input onChange={(e)=>{
                                 console.log(e.target.value)
                                 if(!e.target.value){
-                                    setMyFolders(folders)
+                                    setDashboards(dashboards)
                                 }else{
-                                    setMyFolders(oldArray=>oldArray.map(item=>item.status?{...item,dashboards:item.dashboards.filter(dashboard=>dashboard.name.toLowerCase().includes(e.target.value.toLowerCase()))}:{...item}))
+                                    setDashboards(dashboards.filter(dashboard=>dashboard.dashboard_name.toLowerCase().includes(e.target.value.toLowerCase())))
                                 }
                             }} className="w-240 h-36 text-13 outline-none text-white" style={{borderRadius:'50px',padding:'8px 16px',background:'rgba(0, 0, 0, 0.05)'}} type="text" placeholder="Search for dashboard.."/>
                             <label className="flex items-center ml-4">
                                 <input type="checkbox" onChange={(e)=>{
                                 dispatch({
-                                    type:FOLDERS_DATA,
-                                    payload:folders.map(folder=>{
-                                        const dashboardF=folder.dashboards.map(dashboard=>{
-                                            dashboard['status']=e.target.checked
-                                            return dashboard
-                                        })
-                                        folder['dashboards']=dashboardF
-                                        return folder
+                                    type:DASHBOARDS_DATA,
+                                    payload:myDashboards.map(item=>{
+                                        return {...item,status:e.target.checked}
                                     })
                                 })
                             }} />
@@ -208,13 +327,20 @@ const DrawerModal = ({handelOpen1}) => {
                     </div>
                     <div className="flex flex-col overflow-auto" style={{padding:'0px 24px'}}>
                     {
-                        myFolders.filter(item=>item.status).map((item,i)=>(
-                            item.dashboards.map((item1,i1)=>(
-                            <Fragment key={i1}>
-                                <StripeDashboard active={item1.status} data={item1} handleDashboardStatus={()=>handleDashboardStatus(item,item1)} handleDashboardDelete={()=>handleDashboardDelete(item,item1)}/>
-                            </Fragment>
-                            ))
-                        ))
+                        myDashboards.map((item,i)=>{
+                            var {id}=item
+                            return (
+                                <StripeDashboard active={item.status} data={item} handleDashboardStatus={()=>handleDashboardStatus(item)} handleDashboardDelete={()=>deleteDashboard({ variables: { id } })}/>
+    
+                            )
+                        }
+                        )
+                        // myFolders.filter(item=>item.status).map((item,i)=>(
+                        //     item.dashboards.map((item1,i1)=>(
+                        //     <Fragment key={i1}>
+                        //     </Fragment>
+                        //     ))
+                        // ))
                     }
                     </div>
                 </div>

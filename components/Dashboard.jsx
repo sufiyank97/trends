@@ -27,13 +27,14 @@ const CUSTOM_STYLING={
 }
 const CUSTOM_STYLING1={
     overlay:{
-        background: 'rgba(51, 52, 73, 0.8)',
+        // background: 'rgba(51, 52, 73, 0.8)',
+        background: 'transparent',
         // opacity: "0.95",
         zIndex:'11111'
     },
     content:{
         position:'absolute',
-        top: '65px',
+        top: '60px',
         left: '80px',
         right: 'auto',
         bottom: 'auto',
@@ -142,6 +143,7 @@ const Dashboard = () => {
         images.push(i)
     }
     const [brands,setBrands]=useState(false)
+    
     return (
         <div>
             {

@@ -16,6 +16,8 @@ const AppStore = React.createContext({
             status:true
         }
     ],
+    dashboards:[],
+    selectedFolderValue:{},
     competition:false,
     colour:false,
     price:false,
