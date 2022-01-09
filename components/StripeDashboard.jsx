@@ -6,7 +6,7 @@ const StripeDashboard = ({active,data,handleDashboardStatus,handleDashboardDelet
         arr1.push(i)
     }
     return (
-        <div onClick={()=>handleDashboardStatus()} className={`cursor-pointer flex flex-col justify-center ${active?'bg-secondary2':'bg-secondary'} `} style={{borderRadius:'8px',marginTop:'11px'}}>
+        <div onClick={()=>handleDashboardStatus()} className={`cursor-pointer hover:bg-secondary2 flex flex-col justify-center ${active?'bg-secondary2':'bg-secondary'} `} style={{borderRadius:'8px',marginTop:'11px'}}>
             <div className={`flex justify-between items-center h-60`} style={{padding:'0 24px'}}>
                 <span className="flex text-14 text-white">
                     {data.dashboard_name}
@@ -15,8 +15,8 @@ const StripeDashboard = ({active,data,handleDashboardStatus,handleDashboardDelet
                     {
                         active?(
                             <div className="flex">
-                                <img src="delete.png" className="mr-4" alt="" onClick={()=>handleDashboardDelete()} />
-                                <img src="notify.png" className="mr-4" alt="" />
+                                <img src="ic-delete.svg" className="mr-4" alt="" onClick={()=>handleDashboardDelete()} />
+                                <img src="ic-alert.svg" className="mr-4" alt="" />
                             </div>
                         ):<Fragment/>
                     }

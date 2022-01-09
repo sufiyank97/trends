@@ -81,23 +81,23 @@ const Dashboard = () => {
     const menus=[
         {
             name:'dashboard',
-            img:'/dashboard.png'
+            img:'/ic-dashboard.svg'
         },
         {
             name:'summary',
-            img:'/summary.png'
+            img:'/ic-summary.svg'
         },
         {
             name:'brands',
-            img:'/brands.png'
+            img:'/ic-brands.svg'
         },
         {
             name:'trends',
-            img:'/trends.png'
+            img:'/ic-trends.svg'
         },
         {
             name:'market',
-            img:'/market.png'
+            img:'/ic-market.svg'
         },
     ]
     const initMenus=[

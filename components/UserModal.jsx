@@ -6,7 +6,7 @@ const UserModal = ({handelAccOpen}) => {
             <div className="flex justify-between">
                 <h1 className="capitalize text-pricol1 text-12_20">my account</h1>
                 <span className="cursor-pointer" onClick={()=>handelAccOpen()}>
-                    <img src="/close.png"  alt="" />
+                    <img src="/ic-close.svg"  alt="" />
                 </span>
             </div>
             <div className="flex flex-col p-4">
@@ -19,7 +19,7 @@ const UserModal = ({handelAccOpen}) => {
                         <h1 className="text-12_20 text-pricol1">alexbunnetat@gmail.com</h1>
                     </div>
                     <div className="flex cursor-pointer">
-                        <img src="/edit.png" className="h-14" alt="" />
+                        <img src="/ic-edit.svg"  alt="" />
                     </div>
                 </div>
                 <div className="flex py-4">

@@ -274,11 +274,11 @@ const DrawerModal = ({handelOpen1}) => {
                                         })
                                     }
                                 }} className="flex items-center w-full" style={{height:'100%'}}>
-                                        <img src="/folder.png" className="h-15" alt="" />
+                                        <img src="/folder.svg" className="h-15" alt="" />
                                         <h1 className="text-14 text-white px-2">{item.folderName}</h1>
                                     </div>
                                     <div className="flex h-20">
-                                        <img src="/delete.png" className="w-full pr-2" alt="" onClick={()=>{
+                                        <img src="/ic-delete.svg" className="w-full pr-2" alt="" onClick={()=>{
                                             if(myFolders.length===1){
                                                 alert('Cant able to delete')
                                             }else{
@@ -293,7 +293,7 @@ const DrawerModal = ({handelOpen1}) => {
                                                 })
                                             }
                                         }} />
-                                        <img src="/dots.png" className="w-full" alt="" />
+                                        <img src="/ic-more.svg" className="w-full" alt="" />
                                     </div>
                                 </div>
                             ))

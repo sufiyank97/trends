@@ -100,11 +100,11 @@ const Brands = () => {
                 {
                     priceExpand?(
                         <div onClick={()=>setPriceExpand(!priceExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/minus.png"  alt="" />
+                            <img src="/ic-minus.svg"  alt="" />
                         </div>
                     ):(
                         <div onClick={()=>setPriceExpand(!priceExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/plus.png"  alt="" />
+                            <img src="/ic-add.svg"  alt="" />
                         </div>
                     )
                 }
@@ -128,11 +128,11 @@ const Brands = () => {
                 {
                     dateExpand?(
                         <div onClick={()=>setDateExpand(!dateExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/minus.png"  alt="" />
+                            <img src="/ic-minus.svg"  alt="" />
                         </div>
                     ):(
                         <div onClick={()=>setDateExpand(!dateExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/plus.png"  alt="" />
+                            <img src="/ic-add.svg"  alt="" />
                         </div>
                     )
                 }

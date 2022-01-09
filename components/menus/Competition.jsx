@@ -8,8 +8,8 @@ const Competition = () => {
     const arr1=['boohoo','new look','nike']
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="flex self-end cursor-pointer" onClick={()=>dispatch({type:COMPETITION,payload:false})}>
-                <img src="/close.png" alt="" />
+            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:COMPETITION,payload:false})}>
+                <img src="/ic-close.svg" alt="" />
             </div>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-pricol1 mb-2">select retailers</h1>
@@ -24,9 +24,9 @@ const Competition = () => {
                 {
                     arr.map((item,i)=>(
                         <div className="flex items-center" key={i}>
-                            <input id={i} className="mr-1" type="checkbox" name=""  style={{accentColor:'yellow'}} />
+                            <input id={i} className="style-checkbox" type="checkbox" name=""  style={{lineHeight:'initial'}} />
                                 <span></span>
-                                <label htmlFor={i} className="capitalize flex items-center text-white text-12_20">
+                                <label htmlFor={i} className="capitalize flex items-center text-white text-12_20 ml-2">
                                     {item}
                                 </label>
                             {/* <label  className="capitalize flex items-center text-white text-12_20 ">
@@ -50,9 +50,9 @@ const Competition = () => {
                 {
                     arr1.map((item,i)=>(
                         <div className="flex items-center" key={i}>
-                            <input id={item} className="mr-1" type="checkbox" name=""  style={{accentColor:'yellow'}} />
+                            <input id={item} className="style-checkbox" type="checkbox" name=""  style={{lineHeight:'initial'}} />
                                 <span></span>
-                                <label htmlFor={item} className="capitalize flex items-center text-white text-12_20">
+                                <label htmlFor={item} className="capitalize flex items-center text-white text-12_20 ml-2">
                                     {item}
                                 </label>
                             {/* <label  className="capitalize flex items-center text-white text-12_20 ">
