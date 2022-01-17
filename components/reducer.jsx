@@ -7,10 +7,54 @@ import {
     COLOUR,
     PRICE,
     MARKET,
+    PINNED_BTN,
+    MARKETS_BTN,
+    COMPETITION_BTN,
+    COLOURS_BTN,
+    PRICES_BTN,
+    DATES_BTN,
+    DATE,
+    KEYWORD,
+    MARKETS_STATUS_BTN,
 } from './AppConstants'
 
 export default function reducer(state, action) {
     switch (action.type) {
+        case MARKETS_STATUS_BTN:
+            return {
+                ...state,
+                markets_status: action.payload,
+            };
+        case MARKETS_BTN:
+            return {
+                ...state,
+                markets: action.payload,
+            };
+        case COMPETITION_BTN:
+            return {
+                ...state,
+                competitions: action.payload,
+            };
+        case COLOURS_BTN:
+            return {
+                ...state,
+                colours: action.payload,
+            };
+        case PRICES_BTN:
+            return {
+                ...state,
+                prices: action.payload,
+            };
+        case DATES_BTN:
+            return {
+                ...state,
+                dates: action.payload,
+            };
+        case PINNED_BTN:
+            return {
+                ...state,
+                pinned: action.payload,
+            };
         case COOKIES_DATA:
             return {
                 ...state,
@@ -45,6 +89,16 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 price: action.payload,
+            };
+        case DATE:
+            return {
+                ...state,
+                date1: action.payload,
+            };
+        case KEYWORD:
+            return {
+                ...state,
+                keyword: action.payload,
             };
         case MARKET:
             return {

@@ -22,6 +22,8 @@ import {
   CREATE_DASHBOARD,
   DELETE_DASHBOARD
 } from '../apollo/remote/mutations';
+import Delete from '../public/ic-delete.svg'
+import More from '../public/ic-more.svg'
 import { currentUser } from '../apollo/client';
 const DrawerModal = ({handelOpen1}) => {
     const {state,dispatch}=useContext(AppStore)
@@ -217,7 +219,7 @@ const DrawerModal = ({handelOpen1}) => {
             })
         })
     }
-    
+    const [more,setMore]=useState(false)
     return (
         <>
             <Modal
@@ -246,25 +248,25 @@ const DrawerModal = ({handelOpen1}) => {
                         {
                             tabs1.map((item,i)=>(
                                 <div key={i} onClick={()=>setTabs1(tabs1=>tabs1.map(item1=>item1.name===item.name?{...item1,active:true}:{...item1,active:false}))} className="flex items-center cursor-pointer justify-center w-full" style={{borderTop:item.active?'3px solid #7EC243':''}}>
-                                    <span   className={`capitalize text-12_20 ${item.active?'text-white':'text-pricol1'}`}>{item.name}</span>
+                                    <span   className={`capitalize font-noto text-12_20 ${item.active?'text-white':'text-pricol1'}`}>{item.name}</span>
                                 </div>
                             ))
                         }
                     </div>
-                    <div className="flex justify-around items-center h-60" style={{padding:'12px 16px'}}>
+                    <div className="flex justify-between items-center h-60" style={{padding:'12px 16px'}}>
                         <input onChange={(e)=>{
                                 if(!e.target.value){
                                     setMyFolders1(folders)
                                 }else{
                                     setMyFolders1(folders.filter(item=>item.folderName.toLowerCase().includes(e.target.value.toLowerCase())))
                                 }
-                            }} type="text" className="text-12_20 w-191 outline-none text-white" style={{borderRadius:'50px',background:'rgba(0, 0, 0, 0.07)',padding:'8px 16px'}} placeholder="Search for folders..."/>
-                        <span onClick={()=>setOpenFolder(true)} className="cursor-pointer capitalize text-yellow text-13">+add folder</span>
+                            }} type="text" className="search text-12_20 w-191 outline-none text-white" placeholder="Search for folders..."/>
+                        <span onClick={()=>setOpenFolder(true)} className="cursor-pointer capitalize text-yellow text-13 font-noto">+add folder</span>
                     </div>
                     <div className="flex flex-col w-full">
                         {
                             myFolders1.map((item,i,arr)=>(
-                                <div  key={i} className={`flex items-center px-4 hover:bg-pri1 cursor-pointer items-center justify-between h-48 w-full ${item.status?'bg-pri1':''}`}>
+                                <div  key={i} className={`flex items-center px-4 hover:bg-pri1 cursor-pointer relative items-center justify-between h-48 w-full ${item.status?'bg-pri1':''} group`}>
                                     <div onClick={()=>{
                                     if(myFolders.length!=1){
                                         // setMyFolders(folders=>folders.map(item1=>item1.name===item.name?{...item1,status:true}:{...item1,status:false}))
@@ -273,12 +275,12 @@ const DrawerModal = ({handelOpen1}) => {
                                             payload:folders.map(item1=>item1.id===item.id?{...item1,status:true}:{...item1,status:false}) 
                                         })
                                     }
-                                }} className="flex items-center w-full" style={{height:'100%'}}>
+                                }} className="flex items-center  w-full " style={{height:'100%'}}>
                                         <img src="/folder.svg" className="h-15" alt="" />
-                                        <h1 className="text-14 text-white px-2">{item.folderName}</h1>
+                                        <h1 className="text-14 capitalize text-white px-2">{item.folderName}</h1>
                                     </div>
-                                    <div className="flex h-20">
-                                        <img src="/ic-delete.svg" className="w-full pr-2" alt="" onClick={()=>{
+                                    <div className={`h-20 group-hover:flex group-focus:flex ${item.status?'flex':'hidden'}`}>
+                                        <Delete className="svg1 mr-2" onClick={()=>{
                                             if(myFolders.length===1){
                                                 alert('Cant able to delete')
                                             }else{
@@ -290,11 +292,18 @@ const DrawerModal = ({handelOpen1}) => {
                                                 dispatch({
                                                     type:FOLDERS_DATA,
                                                     payload:cc
-                                                })
+                                                }) 
                                             }
                                         }} />
-                                        <img src="/ic-more.svg" className="w-full" alt="" />
+                                        <More className="svg1" onClick={()=>setMore(!more)}/>
                                     </div>
+                                    {
+                                        item.status && more &&
+                                    <div className="absolute flex flex-col w-131 h-72 z-10 bg-secondary4" style={{right:'0px',bottom:'-4.5rem'}}>
+                                        <span onClick={()=>setMore(false)} className="text-14 text-white py-2 pl-4 capitalize hover:bg-secondary5">rename</span>
+                                        <span onClick={()=>setMore(false)} className="text-14 hover:bg-secondary5 text-white py-2 pl-4 capitalize">share</span>
+                                    </div>
+                                    }
                                 </div>
                             ))
                         }
@@ -302,7 +311,7 @@ const DrawerModal = ({handelOpen1}) => {
                 </div>
                 <div className="flex flex-col w-633 bg-pri1 overflow-hidden">
                     <div className="flex justify-between items-center h-60" style={{padding:'0 24px'}}>
-                        <span onClick={()=>setOpenDashboard(true)} className="cursor-pointer capitalize text-yellow text-13">+add dashboard</span>
+                        <span onClick={()=>setOpenDashboard(true)} className="cursor-pointer capitalize text-yellow text-13 font-noto">+add dashboard</span>
                         <div className="flex items-center">
                             <input onChange={(e)=>{
                                 console.log(e.target.value)
@@ -311,9 +320,9 @@ const DrawerModal = ({handelOpen1}) => {
                                 }else{
                                     setDashboards(dashboards.filter(dashboard=>dashboard.dashboard_name.toLowerCase().includes(e.target.value.toLowerCase())))
                                 }
-                            }} className="w-240 h-36 text-13 outline-none text-white" style={{borderRadius:'50px',padding:'8px 16px',background:'rgba(0, 0, 0, 0.05)'}} type="text" placeholder="Search for dashboard.."/>
+                            }} className="w-240 h-36 search text-13 outline-none text-white" type="text" placeholder="Search for dashboard.."/>
                             <label className="flex items-center ml-4">
-                                <input type="checkbox" onChange={(e)=>{
+                                <input type="checkbox" className="style-checkbox" onChange={(e)=>{
                                 dispatch({
                                     type:DASHBOARDS_DATA,
                                     payload:myDashboards.map(item=>{
@@ -321,7 +330,7 @@ const DrawerModal = ({handelOpen1}) => {
                                     })
                                 })
                             }} />
-                                <span  className="ml-2 text-12_20 text-pricol1 capitalize">expand all</span>
+                                <span  className="text-12_20 text-pricol1 capitalize">expand all</span>
                             </label>
                         </div>
                     </div>

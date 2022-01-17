@@ -51,10 +51,10 @@ const DashboardOpen = ({handelDashOpen}) => {
     });
     return (
         <div className="flex flex-col justify-around h-full" style={{padding:'0 24px'}}>
-            <span className="text-24 text-black1 capitalize">create dashboard</span>
+            <span className="text-24 text-black1 capitalize font-noto">create dashboard</span>
             <input value={dashboardName} onChange={(e)=>setDashboard(e.target.value)} type="text" placeholder="Dashboard name" className="outline-none text-grey3 text-16 w-full" style={{padding:'12px 16px',border:'1px solid #D9D9D9',borderRadius:'6px'}} />
             <div className="flex items-center self-end">
-                <span onClick={()=>handelDashOpen()} className="capitalize cursor-pointer text-16 text-black2">cancel</span>
+                <span onClick={()=>handelDashOpen()} className="capitalize cursor-pointer text-16 text-black2 font-noto">cancel</span>
                 <span onClick={async()=>{
                     // const foldersData={
                     //     name:dashboardName,
@@ -69,7 +69,7 @@ const DashboardOpen = ({handelDashOpen}) => {
                     // })
                     await createDashboard()
                     handelDashOpen()
-                }} className="ml-4 capitalize cursor-pointer text-16 text-white bg-secondary1" style={{borderRadius:'6px',padding:'10px 20px'}}>create dashboard</span>
+                }} className="ml-4 capitalize cursor-pointer font-noto text-16 text-white bg-secondary1" style={{borderRadius:'6px',padding:'10px 20px'}}>create dashboard</span>
             </div>
         </div>
     )

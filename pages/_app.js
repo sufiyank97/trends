@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import "react-datepicker/dist/react-datepicker.css";
 import React, { useContext, useReducer, useEffect} from 'react'
 import AppStore from '../components/store'
 import reducer from '../components/reducer'

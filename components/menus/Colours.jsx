@@ -1,39 +1,41 @@
 import React,{useState,useContext,useEffect} from 'react'
 import AppStore from './../store'
-import {COLOUR} from './../AppConstants'
+import {COLOUR,COLOURS_BTN} from './../AppConstants'
 const Colours = () => {
-    const {dispatch}=useContext(AppStore)
-    const colors=[
-        '#E64242',
-        '#E2E642',
-        '#45E642',
-        '#E642CB',
-        '#4542E6',
-        '#42DCE6',
-        '#E64242',
-        '#E2E642',
-        '#45E642',
-        '#E642CB',
-        '#4542E6',
-        '#42DCE6',
-    ]
+    const {state,dispatch}=useContext(AppStore)
+    const {colours}=state
+    const [arr,setArr]=useState([])
+    useEffect(()=>{
+        setArr(colours.arrm_init)
+    },[colours])
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="flex self-end cursor-pointer" onClick={()=>dispatch({type:COLOUR,payload:false})}>
+            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:COLOUR,payload:false})}>
                 <img src="/close.png" alt="" />
             </div>
             <div className="flex flex-col">
-                <h1 className="text-12_20 capitalize text-pricol1 mb-2">select colors</h1>
-                <div className="grid grid-cols-6 gap-2 px-2 items-center">
+                <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">select colors</h1>
+                    <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search region list..." />
+            </div>
+                <div className="grid grid-cols-2 gap-2 mt-2">
                     {
-                        colors.map((item,i)=>(
-                            <div key={i} className={`flex w-20 h-20 `} style={{background:item,borderRadius:'50%',border:`1px solid ${item}`}}>
-
+                        arr.map((item,i)=>(
+                            <div className="flex items-center h-32" key={i} style={{padding:'8px 16px'}}>
+                                <label  className="capitalize flex items-center text-white text-12_20">
+                                    <input  onChange={(e)=>{
+                                        var colours_data={...colours}
+                                        colours_data['arrm_init']=colours_data['arrm_init'].map(ar=>ar.name===item.name?{...ar,'status':e.target.checked}:{...ar})
+                                        dispatch({
+                                            type:COLOURS_BTN,
+                                            payload:colours_data
+                                        })
+                                    }} checked={item.status} className="style-checkbox1 ml-2" type="checkbox" name=""  style={{lineHeight:'initial'}}/>
+                                    {item.name}
+                                </label>
                             </div>
                         ))
                     }
                 </div>
-            </div>
         </div>
     )
 }
