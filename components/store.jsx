@@ -32,19 +32,27 @@ const AppStore = React.createContext({
                 status:false
             },
             {
-                name:'argentina (AR)',
+                name:'india',
                 status:false
             },
             {
-                name:'argentina (AR)',
+                name:'USA',
                 status:false
             },
             {
-                name:'argentina (AR)',
+                name:'UK',
                 status:false
             },
             {
-                name:'argentina (AR)',
+                name:'Africa',
+                status:false
+            },
+            {
+                name:'Duabi',
+                status:false
+            },
+            {
+                name:'pakistan',
                 status:false
             },
         ],
@@ -102,19 +110,19 @@ const AppStore = React.createContext({
                 status:false
             },
             {
-                name:'jakeshoes',
+                name:'jakeshoes1',
                 status:false
             },
             {
-                name:'jakeshoes',
+                name:'jakeshoes2',
                 status:false
             },
             {
-                name:'jakeshoes',
+                name:'jakeshoes3',
                 status:false
             },
             {
-                name:'jakeshoes',
+                name:'jakeshoes4',
                 status:false
             },
         ],
@@ -140,19 +148,19 @@ const AppStore = React.createContext({
                 status:false
             },
             {
-                name:'black',
+                name:'red',
                 status:false
             },
             {
-                name:'black',
+                name:'white',
                 status:false
             },
             {
-                name:'black',
+                name:'grey',
                 status:false
             },
             {
-                name:'black',
+                name:'purple',
                 status:false
             },
         ],

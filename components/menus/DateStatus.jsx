@@ -2,6 +2,7 @@ import React,{useState,useContext,useEffect} from 'react'
 import AppStore from './../store'
 import {DATE,DATES_BTN} from './../AppConstants'
 import DatePicker from 'react-datepicker'
+import Close from '../../public/ic-close.svg'
 const DateStatus = () => {
     const {state,dispatch}=useContext(AppStore)
     const {dates}=state
@@ -45,15 +46,13 @@ const DateStatus = () => {
     },[radio1,radio2,radio3])
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:DATE,payload:false})}>
-                <img src="/close.png" alt="" />
-            </div>
+            <Close className="svg1 flex self-end cursor-pointer" onClick={()=>dispatch({type:DATE,payload:false})}/>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">new in</h1>
                 <div className="grid grid-cols-2 gap-2 my-2 ">
                     <div className="flex items-center">
-                        <label htmlFor="all" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="all" checked={radio1==="all"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input checked={radio1==="all"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -65,8 +64,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past week" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past week" checked={radio1==="past week"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio1==="past week"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -78,8 +77,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past month" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past month" checked={radio1==="past month"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio1==="past month"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -91,8 +90,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past 3 months" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past 3 months" checked={radio1==="past 3 months"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio1==="past 3 months"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -106,8 +105,8 @@ const DateStatus = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="flex items-center">
-                        <label htmlFor="date range" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="date range" checked={radio1==="date range"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio1==="date range"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -119,13 +118,13 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <DatePicker className="mx-2 p-2 w-76 bg-transparent border rounded outline-none border-secondary9"  placeholderText='From' selected={startDate1} onChange={(date) => dispatch({
+                        <DatePicker className="mx-2 p-2 w-76 bg-transparent border rounded outline-none border-secondary9 py-2 px-3"  placeholderText='From' selected={startDate1} onChange={(date) => dispatch({
                             type:DATES_BTN,
                             payload:{...dates,date1:date}
                         })} />
                     </div>
                     <div className="flex items-center">
-                        <DatePicker className="p-2 w-76 bg-transparent border rounded outline-none border-secondary9"  placeholderText='From' selected={startDate2} onChange={(date) => dispatch({
+                        <DatePicker className="p-2 w-76 bg-transparent border rounded outline-none border-secondary9 py-2 px-3"  placeholderText='To' selected={startDate2} onChange={(date) => dispatch({
                             type:DATES_BTN,
                             payload:{...dates,date2:date}
                         })} />
@@ -136,8 +135,8 @@ const DateStatus = () => {
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">first sell out</h1>
                 <div className="grid grid-cols-2 gap-2 my-2 ">
                     <div className="flex items-center">
-                        <label htmlFor="all" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="all" checked={radio2==="all"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input checked={radio2==="all"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -149,8 +148,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past week" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past week" checked={radio2==="past week"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio2==="past week"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -162,8 +161,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past month" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past month" checked={radio2==="past month"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio2==="past month"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -175,8 +174,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past 3 months" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past 3 months" checked={radio2==="past 3 months"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio2==="past 3 months"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -190,8 +189,8 @@ const DateStatus = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="flex items-center">
-                        <label htmlFor="date range" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="date range" checked={radio2==="date range"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio2==="date range"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -203,13 +202,13 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <DatePicker className="mx-2 p-2 w-76 bg-transparent border rounded outline-none border-secondary9"  placeholderText='From' selected={startDate3} onChange={(date) => dispatch({
+                        <DatePicker className="mx-2 p-2 w-76 bg-transparent border rounded outline-none border-secondary9 py-2 px-3"  placeholderText='From' selected={startDate3} onChange={(date) => dispatch({
                             type:DATES_BTN,
                             payload:{...dates,date3:date}
                         })} />
                     </div>
                     <div className="flex items-center">
-                        <DatePicker className="p-2 w-76 bg-transparent border rounded outline-none border-secondary9"  placeholderText='From' selected={startDate4} onChange={(date) => dispatch({
+                        <DatePicker className="p-2 w-76 bg-transparent border rounded outline-none border-secondary9 py-2 px-3"  placeholderText='To' selected={startDate4} onChange={(date) => dispatch({
                             type:DATES_BTN,
                             payload:{...dates,date4:date}
                         })} />
@@ -220,8 +219,8 @@ const DateStatus = () => {
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">First Discounted</h1>
                 <div className="grid grid-cols-2 gap-2 my-2 ">
                     <div className="flex items-center">
-                        <label htmlFor="all" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="all" checked={radio3==="all"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input checked={radio3==="all"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -233,8 +232,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past week" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past week" checked={radio3==="past week"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio3==="past week"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -246,8 +245,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past month" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past month" checked={radio3==="past month"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio3==="past month"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -259,8 +258,8 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <label htmlFor="past 3 months" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="past 3 months" checked={radio3==="past 3 months"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio3==="past 3 months"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -274,8 +273,8 @@ const DateStatus = () => {
                 </div>
                 <div className="flex items-center">
                     <div className="flex items-center">
-                        <label htmlFor="date range" className="capitalize flex items-center text-white text-12_20 ml-2">
-                            <input value="date range" checked={radio3==="date range"} onChange={()=>dispatch({
+                        <label  className="capitalize flex items-center text-white text-12_20 ml-2">
+                            <input  checked={radio3==="date range"} onChange={()=>dispatch({
                                 type:DATES_BTN,
                                 payload:{
                                     ...dates,
@@ -287,13 +286,13 @@ const DateStatus = () => {
                         </label>
                     </div>
                     <div className="flex items-center">
-                        <DatePicker className="mx-2 p-2 w-76 bg-transparent border rounded outline-none border-secondary9"  placeholderText='From' selected={startDate5} onChange={(date) => dispatch({
+                        <DatePicker className="mx-2 p-2 w-76 bg-transparent border rounded outline-none border-secondary9 py-2 px-3"  placeholderText='From' selected={startDate5} onChange={(date) => dispatch({
                             type:DATES_BTN,
                             payload:{...dates,date5:date}
                         })} />
                     </div>
                     <div className="flex items-center">
-                        <DatePicker className="p-2 w-76 bg-transparent border rounded outline-none border-secondary9"  placeholderText='From' selected={startDate6} onChange={(date) => dispatch({
+                        <DatePicker className="p-2 w-76 bg-transparent border rounded outline-none border-secondary9 py-2 px-3"  placeholderText='To' selected={startDate6} onChange={(date) => dispatch({
                             type:DATES_BTN,
                             payload:{...dates,date6:date}
                         })} />

@@ -1,6 +1,7 @@
 import React,{useState,useContext,useEffect} from 'react'
 import AppStore from './../store'
 import {COLOUR,COLOURS_BTN} from './../AppConstants'
+import Close from '../../public/ic-close.svg'
 const Colours = () => {
     const {state,dispatch}=useContext(AppStore)
     const {colours}=state
@@ -10,17 +11,14 @@ const Colours = () => {
     },[colours])
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:COLOUR,payload:false})}>
-                <img src="/close.png" alt="" />
-            </div>
+            <Close className="svg1 flex self-end cursor-pointer" onClick={()=>dispatch({type:COLOUR,payload:false})}/>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">select colors</h1>
-                    <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search region list..." />
             </div>
-                <div className="grid grid-cols-2 gap-2 mt-2">
+                <div className="grid grid-cols-2 mx-2 mt-2">
                     {
                         arr.map((item,i)=>(
-                            <div className="flex items-center h-32" key={i} style={{padding:'8px 16px'}}>
+                            <div className="flex items-center h-28" key={i} style={{padding:'4px 0px'}}>
                                 <label  className="capitalize flex items-center text-white text-12_20">
                                     <input  onChange={(e)=>{
                                         var colours_data={...colours}

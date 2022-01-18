@@ -1,7 +1,7 @@
 import React,{useState,useContext,useEffect} from 'react'
 import AppStore from './../store'
 import {COMPETITION,COMPETITION_BTN} from './../AppConstants'
-
+import Close from '../../public/ic-close.svg'
 const Competition = () => {
     const {state,dispatch}=useContext(AppStore)
     const {competitions}=state
@@ -13,14 +13,12 @@ const Competition = () => {
     },[competitions])
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:COMPETITION,payload:false})}>
-                <img src="/ic-close.svg" alt="" />
-            </div>
+            <Close className="svg1 flex self-end cursor-pointer" onClick={()=>dispatch({type:COMPETITION,payload:false})}/>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">select retailers</h1>
-                <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search for retailer..." />
             </div>
-            <div className="flex flex-col mb-2 w-full bg-pri1">
+            <div className="flex flex-col mb-2 w-full bg-pri1" style={{borderRadius: '18px 18px 6px 6px'}}>
+                <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search for retailer..." />
                 <div className="flex flex-col w-full overflow-x-hidden h-full max-h-160 scrollbar-thin scrollbar-thumb-secondary7 scrollbar-track-secondary8 scrollbar-thumb-rounded-2xl">
                     {
                         arr.map((item,i)=>(
@@ -43,9 +41,9 @@ const Competition = () => {
             </div>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 my-2 font-noto">select brands</h1>
-                <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search for brand..." />
             </div>
-            <div className="flex flex-col mb-2 w-full bg-pri1">
+            <div className="flex flex-col mb-2 w-full bg-pri1" style={{borderRadius: '18px 18px 6px 6px'}}>
+                <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search for brand..." />
                 <div className="flex flex-col w-full overflow-x-hidden h-full max-h-160 scrollbar-thin scrollbar-thumb-secondary7 scrollbar-track-secondary8 scrollbar-thumb-rounded-2xl">
                     {
                         arr1.map((item,i)=>(

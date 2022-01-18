@@ -22,49 +22,16 @@ a {
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 *{
-  font-family: 'Montserrat', sans-serif;
   margin:0;
   padding:0;
+  box-sizing: border-box;
+  font-family: 'Montserrat','ui-sans-serif', 'system-ui';
 }
 
-/* input[type="checkbox"]{
-  display:none;
-}
-input[type="checkbox"]+span{
-  width: 12px;
-  height: 12px;
-  margin-right: 0.5rem;
-  background-image: url('/checkbox_unchecked.png');
-}
-input[type="checkbox"]:checked +span{
-  background-image: url('/checkbox_checked.png');
-} */
-/* input[type=checkbox]:before { 
-  content:'';
-  display:inline-block;
-  width: 12px;
-  height: 12px;
-  background:red; 
-}
-input[type=checkbox]:checked:before { background:green; } */
-/* For Firefox Browser */
-.scrollbar1 {
-  scrollbar-width: thin;
-  scrollbar-color: #000 #fff;
-}
-
-
-/* For Chrome, EDGE, Opera, Others */
-.scrollbar1::-webkit-scrollbar {
-  width: 20px;
-}
-
-.scrollbar1::-webkit-scrollbar-track { 
-  background: #fff;
-}
-
-.scrollbar1::-webkit-scrollbar-thumb { 
-  background:#000;
+.svg1:hover{
+  stroke:#fff;
+  background: #42436E;
+  border-radius: 50%;
 }
 .style-checkbox{
   line-height:initial;
@@ -109,13 +76,19 @@ input[type=radio]:checked:before{
   background: url('/ic-radio-selected.svg') #464775;
 }
 
-
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::after{
+  border-bottom-color: #464775 !important;
+}
+.react-datepicker-popper[data-placement^=bottom] .react-datepicker__triangle::before{
+  border-bottom-color: #464775 !important;
+}
 .react-datepicker{
   background: #464775 !important;
   border:0px !important;
   /* width:336px !important;
   padding:32px !important; */
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: 'Montserrat','ui-sans-serif', 'system-ui' !important;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.15) !important;
 }
 .react-datepicker__navigation--previous{
   /* top: 2rem !important; */

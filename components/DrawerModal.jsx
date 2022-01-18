@@ -321,7 +321,7 @@ const DrawerModal = ({handelOpen1}) => {
                                     setDashboards(dashboards.filter(dashboard=>dashboard.dashboard_name.toLowerCase().includes(e.target.value.toLowerCase())))
                                 }
                             }} className="w-240 h-36 search text-13 outline-none text-white" type="text" placeholder="Search for dashboard.."/>
-                            <label className="flex items-center ml-4">
+                            <label className="flex items-center ml-4 text-12_20 text-pricol1 capitalize">
                                 <input type="checkbox" className="style-checkbox" onChange={(e)=>{
                                 dispatch({
                                     type:DASHBOARDS_DATA,
@@ -330,7 +330,7 @@ const DrawerModal = ({handelOpen1}) => {
                                     })
                                 })
                             }} />
-                                <span  className="text-12_20 text-pricol1 capitalize">expand all</span>
+                            expand all
                             </label>
                         </div>
                     </div>

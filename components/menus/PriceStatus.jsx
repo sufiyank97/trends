@@ -1,6 +1,7 @@
 import React,{useState,useContext,useEffect} from 'react'
 import AppStore from './../store'
 import {PRICE,PRICES_BTN} from './../AppConstants'
+import Close from '../../public/ic-close.svg'
 const PriceStatus = () => {
     const {state,dispatch}=useContext(AppStore)
     const {prices}=state
@@ -16,9 +17,7 @@ const PriceStatus = () => {
     },[prices])
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:PRICE,payload:false})}>
-                <img src="/close.png" alt="" />
-            </div>
+            <Close className="svg1 flex self-end cursor-pointer" onClick={()=>dispatch({type:PRICE,payload:false})}/>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">status</h1>
                 <div className="flex mt-2 ">
@@ -154,8 +153,8 @@ const PriceStatus = () => {
             <div className="flex flex-col w-full my-6">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">price range</h1>
                 <div className="flex justify-between w-full px-2 mt-2">
-                    <input type="text" name="" placeholder="From" style={{borderColor:'rgba(255, 255, 255, 0.3)'}} className="bg-transparent text-12_20 border-2 py-2 px-1 rounded-md outline-none w-full" id="" />
-                    <input type="text" name="" placeholder="To" style={{borderColor:'rgba(255, 255, 255, 0.3)'}} className="bg-transparent text-12_20 border-2 py-2 px-1 rounded-md outline-none w-full ml-4" id="" />
+                    <input type="text" name="" placeholder="From" style={{borderColor:'rgba(255, 255, 255, 0.3)'}} className="bg-transparent text-12_20 border-2 py-2 px-3 rounded-md outline-none w-full" id="" />
+                    <input type="text" name="" placeholder="To" style={{borderColor:'rgba(255, 255, 255, 0.3)'}} className="bg-transparent text-12_20 border-2 py-2 px-3 rounded-md outline-none w-full ml-4" id="" />
                 </div>
             </div>
             <div className="flex flex-col w-full">

@@ -1,6 +1,7 @@
 import React,{useState,useContext,useEffect} from 'react'
 import AppStore from './../store'
 import {MARKET,MARKETS_BTN,MARKETS_STATUS_BTN} from './../AppConstants'
+import Close from '../../public/ic-close.svg'
 const Markets = () => {
     const {state,dispatch}=useContext(AppStore)
     const {markets}=state
@@ -16,14 +17,12 @@ const Markets = () => {
     },[markets])
     return (
         <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
-            <div className="hover:bg-pri2 p-1 flex self-end cursor-pointer" onClick={()=>dispatch({type:MARKET,payload:false})}>
-                <img src="/ic-close.svg" alt="" />
-            </div>
+            <Close className="svg1 flex self-end cursor-pointer" onClick={()=>dispatch({type:MARKET,payload:false})}/>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">select regions</h1>
-                    <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search region list..." />
             </div>
-            <div className="flex flex-col mb-2 w-full bg-pri1">
+            <div className="flex flex-col mb-2 w-full bg-pri1" style={{borderRadius: '18px 18px 6px 6px'}}>
+                    <input type="text" name="" id="" className="search w-full outline-none" placeholder="Search region list..." />
                 <div className="flex flex-col w-full overflow-x-hidden h-full max-h-160 scrollbar-thin scrollbar-thumb-secondary7 scrollbar-track-secondary8 scrollbar-thumb-rounded-2xl">
                     {
                         arr.map((item,i)=>(

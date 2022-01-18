@@ -181,7 +181,9 @@ module.exports = {
       extend: {
         display: ['group-hover','group-focus'],
         visibility: ['group-hover'],
-        scrollbar: ['rounded']
+        scrollbar: ['rounded'],
+        fill: ['hover', 'focus'],
+        stroke: ['hover', 'focus'],
       },
     },
     

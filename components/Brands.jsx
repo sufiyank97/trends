@@ -14,6 +14,8 @@ import {
 import Pin from '../public/ic-pin.svg'
 import Pinh from '../public/ic-pin-hover.svg'
 import Pinned from '../public/ic-pinned.svg'
+import Add from '../public/ic-add.svg'
+import Minus from '../public/ic-minus.svg'
 const Brands = () => {
     const {state,dispatch}=useContext(AppStore)
     const {competition,colour,price,date1,market,pinned,markets,competitions,colours,prices,dates,keyword}=state
@@ -76,7 +78,7 @@ const Brands = () => {
     const [coloursStatus,setcoloursStatus]=useState(false)
     const [pricesStatus,setpricesStatus]=useState(false)
     const [datesStatus,setdatesStatus]=useState(false)
-    console.log(price1,keyword1)
+
     const [marketExpand,setMarketExpand]=useState(false)
     const [competitionExpand,setCompetitionsExpand]=useState(false)
     const [coloursExpand,setcoloursExpand]=useState(false)
@@ -113,11 +115,11 @@ const Brands = () => {
                 {
                     marketStatus ? marketExpand?(
                         <div onClick={()=>setMarketExpand(!marketExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/ic-minus.svg"  alt="" />
+                            <Minus className="svg1"/>
                         </div>
                     ):(
                         <div onClick={()=>setMarketExpand(!marketExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/ic-add.svg"  alt="" />
+                            <Add className="svg1"/>
                         </div>
                     ):<Fragment />
                 }
@@ -175,11 +177,11 @@ const Brands = () => {
                 {
                     competitionStatus ? competitionExpand?(
                         <div onClick={()=>setCompetitionsExpand(!competitionExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/ic-minus.svg"  alt="" />
+                            <Minus className="svg1"/>
                         </div>
                     ):(
                         <div onClick={()=>setCompetitionsExpand(!competitionExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/ic-add.svg"  alt="" />
+                            <Add className="svg1"/>
                         </div>
                     ):<Fragment />
                 }
@@ -225,17 +227,17 @@ const Brands = () => {
                     dispatch({type:DATE,payload:false})
                     dispatch({type:PRICE,payload:false})
                     dispatch({type:KEYWORD,payload:!keyword1})
-                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${col?'bg-pri1':''}`} style={{height:'100%'}}>
+                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${keyword1?'bg-pri1':''}`} style={{height:'100%'}}>
                 keywords
                 </h1>
                 {/* {
                     coloursStatus ? coloursExpand?(
                         <div onClick={()=>setcoloursExpand(!coloursExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/ic-minus.svg"  alt="" />
+                            <Minus className="svg1"/>
                         </div>
                     ):(
                         <div onClick={()=>setcoloursExpand(!coloursExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/ic-add.svg"  alt="" />
+                            <Add className="svg1"/>
                         </div>
                     ):<Fragment />
                 }
@@ -249,7 +251,7 @@ const Brands = () => {
                     </div>
                 } */}
             </div>
-            {
+            {/* {
                 coloursStatus && coloursExpand && 
                 <>
                     <div className="bg-pri1 py-4 px-2 flex flex-col overflow-x-hidden h-full max-h-244 scrollbar-thin scrollbar-thumb-secondary7 scrollbar-track-secondary8 scrollbar-thumb-rounded-2xl">
@@ -262,7 +264,7 @@ const Brands = () => {
                         </div>
                     </div>
                 </>
-            }
+            } */}
             <div className="flex relative text-white h-39 items-center text-14  justify-between capitalize">
                 <h1 onClick={()=>{
                     dispatch({type:MARKET,payload:false})
@@ -277,11 +279,11 @@ const Brands = () => {
                 {
                     coloursStatus ? coloursExpand?(
                         <div onClick={()=>setcoloursExpand(!coloursExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/ic-minus.svg"  alt="" />
+                            <Minus className="svg1"/>
                         </div>
                     ):(
                         <div onClick={()=>setcoloursExpand(!coloursExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/ic-add.svg"  alt="" />
+                            <Add className="svg1"/>
                         </div>
                     ):<Fragment />
                 }
@@ -323,18 +325,18 @@ const Brands = () => {
                 {
                     pricesStatus ? priceExpand?(
                         <div onClick={()=>setPriceExpand(!priceExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/ic-minus.svg"  alt="" />
+                            <Minus className="svg1"/>
                         </div>
                     ):(
                         <div onClick={()=>setPriceExpand(!priceExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/ic-add.svg"  alt="" />
+                            <Add className="svg1"/>
                         </div>
                     ):<Fragment />
                 }
                 {
                     price1 &&
-                    <div className="absolute flex " style={{right:'-21rem',zIndex:'1',top:'-13rem'}}>
-                        <div className="" style={{paddingTop:'13.5rem'}}>
+                    <div className="absolute flex " style={{right:'-21rem',zIndex:'1',top:'-15rem'}}>
+                        <div className="" style={{paddingTop:'15.5rem'}}>
                             <img src="/left.png" alt="" />
                         </div>
                         <PriceStatus />
@@ -358,11 +360,11 @@ const Brands = () => {
                 {
                     datesStatus ? dateExpand?(
                         <div onClick={()=>setDateExpand(!dateExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
-                            <img src="/ic-minus.svg"  alt="" />
+                            <Minus className="svg1"/>
                         </div>
                     ):(
                         <div onClick={()=>setDateExpand(!dateExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
-                            <img src="/ic-add.svg"  alt="" />
+                            <Add className="svg1"/>
                         </div>
                     ):<Fragment />
                 }
