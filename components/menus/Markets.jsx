@@ -16,7 +16,7 @@ const Markets = () => {
         setArr3(markets.arr3m_init)
     },[markets])
     return (
-        <div className="flex flex-col p-4 w-316 h-auto bg-secondary rounded-md">
+        <div className="flex flex-col p-6 w-316 h-auto bg-secondary rounded-md">
             <Close className="svg1 flex self-end cursor-pointer" onClick={()=>dispatch({type:MARKET,payload:false})}/>
             <div className="flex flex-col">
                 <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">select regions</h1>
