@@ -156,8 +156,8 @@ const PriceStatus = () => {
                 <div className="flex flex-col w-full my-6">
                     <h1 className="text-12_20 capitalize text-secondary6 mb-2 font-noto">price range</h1>
                     <div className="flex justify-between w-full px-2 mt-2">
-                        <input type="text" name="" placeholder="From" style={{borderColor:'rgba(255, 255, 255, 0.3)'}} className="bg-transparent text-12_20 border py-2 px-3 rounded-md outline-none w-full" id="" />
-                        <input type="text" name="" placeholder="To" style={{borderColor:'rgba(255, 255, 255, 0.3)'}} className="bg-transparent text-12_20 border py-2 px-3 rounded-md outline-none w-full ml-4" id="" />
+                        <input type="text" name="" placeholder="From" className="bg-transparent text-12_20 border border-secondary9 py-2 px-3 rounded-md outline-none w-full text-pricol1 hover:border-secondary10 focus:text-white focus:border-yellow" id="" />
+                        <input type="text" name="" placeholder="To" className="bg-transparent text-12_20 border border-secondary9 py-2 px-3 rounded-md outline-none w-full ml-4 text-pricol1 hover:border-secondary10 focus:text-white focus:border-yellow" id="" />
                     </div>
                 </div>
                 <div className="flex flex-col w-full">

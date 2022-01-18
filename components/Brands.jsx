@@ -370,7 +370,7 @@ const Brands = () => {
                     dispatch({type:PRICE,payload:false})
                     dispatch({type:DATE,payload:!date1})
                     dispatch({type:KEYWORD,payload:false})
-                }} className="hover:bg-pri1 p-2 w-full flex items-center" style={{height:'100%'}}>
+                }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${date11?'bg-pri1':''}`} style={{height:'100%'}}>
                     date & time
                 </h1>
                 {

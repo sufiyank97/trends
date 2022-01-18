@@ -54,22 +54,15 @@ const DashboardOpen = ({handelDashOpen}) => {
             <span className="text-24 text-black1 capitalize font-noto">create dashboard</span>
             <input value={dashboardName} onChange={(e)=>setDashboard(e.target.value)} type="text" placeholder="Dashboard name" className="outline-none text-grey3 text-16 w-full" style={{padding:'12px 16px',border:'1px solid #D9D9D9',borderRadius:'6px'}} />
             <div className="flex items-center self-end">
-                <span onClick={()=>handelDashOpen()} className="capitalize cursor-pointer text-16 text-black2 font-noto">cancel</span>
+                <span className="bg-transparent hover:bg-greylight focus:bg-greylight1 active:bg-greylight1 cursor-pointer w-75 h-42 flex items-center justify-center" style={{marginRight:'16px',padding: '10px 20px',borderRadius:'6px'}} onClick={()=>handelDashOpen()}>
+                    <h2 className="text-16_22 text-black2 font-noto">Cancel</h2>
+                </span>
                 <span onClick={async()=>{
-                    // const foldersData={
-                    //     name:dashboardName,
-                    //     images:[],
-                    //     products:1920,
-                    //     status:true
-                    // }
-                    // const cc=folders.map(item=>item.status?{...item,dashboards:[...item.dashboards,foldersData]}:{...item})
-                    // dispatch({
-                    //     type:FOLDERS_DATA,
-                    //     payload:cc
-                    // })
                     await createDashboard()
                     handelDashOpen()
-                }} className="ml-4 capitalize cursor-pointer font-noto text-16 text-white bg-secondary1" style={{borderRadius:'6px',padding:'10px 20px'}}>create dashboard</span>
+                }} className="bg-secondary1 hover:bg-secondary11 focus:bg-secondary111 cursor-pointer w-75 h-42 flex items-center justify-center" style={{padding: '10px 20px',borderRadius:'6px'}}>
+                    <h2 className="text-16_22 text-white font-noto">create dashboard</h2>
+                </span>
             </div>
         </div>
     )

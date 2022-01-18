@@ -28,10 +28,27 @@ a {
   font-family: 'Montserrat', sans-serif;
 }
 
+.op1:before {
+  content: ">";
+  font-size: 14px;
+  line-height: 20px;
+  color: #21241E;
+  display: none;
+  padding: 12px 8px 12px 16px;
+}
+.op1:hover:before {
+  display: inline;
+}
 .svg1:hover{
-  stroke:#fff;
+  /* stroke:#fff; */
   background: #42436E;
   border-radius: 50%;
+}
+.svg1:hover path{
+  fill:#fff;
+}
+.svg2:hover path{
+  fill:#fff;
 }
 .style-checkbox{
   line-height:initial;
@@ -159,8 +176,4 @@ input[type=radio]:checked:before{
   background: rgba(0, 0, 0, 0.3);
 }
 
-.svg1:hover{
-  stroke-width: .5px;
-  stroke: #fff;
-}
 

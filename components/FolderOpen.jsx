@@ -49,20 +49,15 @@ const FolderOpen = ({handelFolOpen}) => {
             <span className="text-24 text-black1 capitalize font-noto">create folder</span>
             <input value={folderName} onChange={(e)=>setFolder(e.target.value)} type="text" placeholder="Folder name" className="outline-none text-grey3 text-16 w-full" style={{padding:'12px 16px',border:'1px solid #D9D9D9',borderRadius:'6px'}} />
             <div className="flex items-center self-end">
-                <span onClick={()=>handelFolOpen()} className="capitalize cursor-pointer text-16 text-black2 font-noto">cancel</span>
+                <span className="bg-transparent hover:bg-greylight focus:bg-greylight1 active:bg-greylight1 cursor-pointer w-75 h-42 flex items-center justify-center" style={{marginRight:'16px',padding: '10px 20px',borderRadius:'6px'}} onClick={()=>handelFolOpen()}>
+                    <h2 className="text-16_22 text-black2 font-noto">Cancel</h2>
+                </span>
                 <span onClick={async()=>{
-                    // const foldersData={
-                    //     name:folderName,
-                    //     dashboards:[],
-                    //     status:false
-                    // }
-                    // dispatch({
-                    //     type:FOLDERS_DATA,
-                    //     payload:[...folders,foldersData]
-                    // })
                     await createFolder()
                     handelFolOpen()
-                }} className="ml-4 capitalize cursor-pointer text-16 text-white bg-secondary1 font-noto" style={{borderRadius:'6px',padding:'10px 20px'}}>create folder</span>
+                }} className="bg-secondary1 hover:bg-secondary11 focus:bg-secondary111 cursor-pointer w-75 h-42 flex items-center justify-center" style={{padding: '10px 20px',borderRadius:'6px'}}>
+                    <h2 className="text-16_22 text-white font-noto">create folder</h2>
+                </span>
             </div>
         </div>
     )
