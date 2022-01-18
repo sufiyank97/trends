@@ -13,6 +13,7 @@ import {
     COLOURS_BTN,
     PRICES_BTN,
     DATES_BTN,
+    KEYWORDS_BTN,
     DATE,
     KEYWORD,
     MARKETS_STATUS_BTN,
@@ -34,6 +35,11 @@ export default function reducer(state, action) {
             return {
                 ...state,
                 competitions: action.payload,
+            };
+        case KEYWORDS_BTN:
+            return {
+                ...state,
+                keywords: action.payload,
             };
         case COLOURS_BTN:
             return {

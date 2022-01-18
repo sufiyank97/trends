@@ -10,6 +10,8 @@ import {
     Markets,
     MarketExpand,
     DateStatus,
+    Keywords,
+    KeywordExpand,
 } from './menus'
 import Pin from '../public/ic-pin.svg'
 import Pinh from '../public/ic-pin-hover.svg'
@@ -18,7 +20,7 @@ import Add from '../public/ic-add.svg'
 import Minus from '../public/ic-minus.svg'
 const Brands = () => {
     const {state,dispatch}=useContext(AppStore)
-    const {competition,colour,price,date1,market,pinned,markets,competitions,colours,prices,dates,keyword}=state
+    const {competition,colour,price,date1,market,pinned,markets,competitions,colours,prices,dates,keyword,keywords}=state
     const [compe,setCompe]=useState(false)
     const [col,setCol]=useState(false)
     const [price1,setPrice]=useState(false)
@@ -72,15 +74,24 @@ const Brands = () => {
                 setdatesStatus(false)
             }
         }
-    },[markets,competitions,colours,prices,dates])
+        if(keywords){
+            if(keywords.include.length>0 || keywords.exclude.length>0 ){
+                setkeywordStatus(true)
+            }else{
+                setkeywordStatus(false)
+            }
+        }
+    },[markets,competitions,colours,prices,dates,keywords])
     const [marketStatus,setMarketStatus]=useState(false)
     const [competitionStatus,setCompetitionStatus]=useState(false)
     const [coloursStatus,setcoloursStatus]=useState(false)
+    const [keywordStatus,setkeywordStatus]=useState(false)
     const [pricesStatus,setpricesStatus]=useState(false)
     const [datesStatus,setdatesStatus]=useState(false)
 
     const [marketExpand,setMarketExpand]=useState(false)
     const [competitionExpand,setCompetitionsExpand]=useState(false)
+    const [keywordExpand,setkeywordExpand]=useState(false)
     const [coloursExpand,setcoloursExpand]=useState(false)
     const [priceExpand,setPriceExpand]=useState(false)
     const [dateExpand,setDateExpand]=useState(false)
@@ -230,13 +241,13 @@ const Brands = () => {
                 }} className={`hover:bg-pri1 p-2 w-full cursor-pointer flex items-center ${keyword1?'bg-pri1':''}`} style={{height:'100%'}}>
                 keywords
                 </h1>
-                {/* {
-                    coloursStatus ? coloursExpand?(
-                        <div onClick={()=>setcoloursExpand(!coloursExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
+                {
+                    keywordStatus ? keywordExpand?(
+                        <div onClick={()=>setkeywordExpand(!keywordExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer bg-pri1">
                             <Minus className="svg1"/>
                         </div>
                     ):(
-                        <div onClick={()=>setcoloursExpand(!coloursExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
+                        <div onClick={()=>setkeywordExpand(!keywordExpand)} className="flex w-44 h-44 items-center justify-center cursor-pointer hover:bg-pri1">
                             <Add className="svg1"/>
                         </div>
                     ):<Fragment />
@@ -247,24 +258,29 @@ const Brands = () => {
                         <div className="" style={{paddingTop:'3.5rem'}}>
                             <img src="/left.png" alt="" />
                         </div>
-                        <Colours />
+                        <Keywords />
                     </div>
-                } */}
+                }
             </div>
-            {/* {
-                coloursStatus && coloursExpand && 
+            {
+                keywordStatus && keywordExpand && 
                 <>
                     <div className="bg-pri1 py-4 px-2 flex flex-col overflow-x-hidden h-full max-h-244 scrollbar-thin scrollbar-thumb-secondary7 scrollbar-track-secondary8 scrollbar-thumb-rounded-2xl">
                         <div style={{padding:'0px 16px'}}>
                             {
-                                colours.arrm_init.some(item=>item.status)?(
-                                    <MarketExpand name="Colors" values={colours.arrm_init} />
+                                keywords.include.length>0?(
+                                    <KeywordExpand name="Include" values={keywords.include} />
+                                ):<Fragment/>
+                            }
+                            {
+                                keywords.exclude.length>0?(
+                                    <KeywordExpand name="Exclude" values={keywords.exclude} />
                                 ):<Fragment/>
                             }
                         </div>
                     </div>
                 </>
-            } */}
+            }
             <div className="flex relative text-white h-39 items-center text-14  justify-between capitalize">
                 <h1 onClick={()=>{
                     dispatch({type:MARKET,payload:false})

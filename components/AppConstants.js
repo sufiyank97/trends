@@ -14,6 +14,7 @@ const COMPETITION_BTN="COMPETITION"
 const COLOURS_BTN="COLOUR"
 const PRICES_BTN="PRICES_BTN"
 const DATES_BTN="DateS_BTN"
+const KEYWORDS_BTN="keywordS_BTN"
 const MARKETS_STATUS_BTN="markets status"
 export {
     MARKETS_BTN,
@@ -21,6 +22,7 @@ export {
     COLOURS_BTN,
     PRICES_BTN,
     DATES_BTN,
+    KEYWORDS_BTN,
     MARKETS_STATUS_BTN,
     PINNED_BTN,
     COOKIES_DATA,

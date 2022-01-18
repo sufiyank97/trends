@@ -234,7 +234,10 @@ const AppStore = React.createContext({
         date4:null,
         date5:null,
         date6:null,
-
+    },
+    keywords:{
+        include:[],
+        exclude:[],
     },
     markets_status:false
 })
